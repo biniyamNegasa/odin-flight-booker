@@ -18,3 +18,28 @@
     </div>
     <%= form.submit "Search" %>
 <% end %>
+
+
+<% unless @flights.nil? || @flights.empty? %>
+    <h4> Book a Flight </h4>
+    <%= form_with do |form| %>
+        <% @flights.each do |flight| %>
+            <p>
+                <div>
+                    Departure Airport: <%= flight.departure_airport.airport_code %>
+                </div>
+                <div>
+                    Arrival Airport: <%= flight.arrival_airport.airport_code %>
+                </div>
+                <div>
+                    Departure Time: <%= flight.start_datetime %>
+                </div>
+                <div>
+                    Duration: <%= flight.duration %>
+                </div>
+                <%= form.radio_button :choice, "Book Me" %>
+            </p>
+        <% end %>
+        <%= form.submit "Book a flight" %>
+    <% end %>
+<% end %>
