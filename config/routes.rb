@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "bookings/new"
+  post "bookings", to: "bookings#create"
+  get "booking/:id", to: "bookings#show", as: "booking"
+
   get "flights", to: "flights#index"
   root to: "flights#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

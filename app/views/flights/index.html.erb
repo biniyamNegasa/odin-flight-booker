@@ -22,22 +22,12 @@
 
 <% unless @flights.nil? || @flights.empty? %>
     <h4> Book a Flight </h4>
-    <%= form_with do |form| %>
+    <%= form_with url: '/bookings/new', method: :get do |form| %>
+        <%= form.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
         <% @flights.each do |flight| %>
             <p>
-                <div>
-                    Departure Airport: <%= flight.departure_airport.airport_code %>
-                </div>
-                <div>
-                    Arrival Airport: <%= flight.arrival_airport.airport_code %>
-                </div>
-                <div>
-                    Departure Time: <%= flight.start_datetime %>
-                </div>
-                <div>
-                    Duration: <%= flight.duration %>
-                </div>
-                <%= form.radio_button :choice, "Book Me" %>
+                <%= render "flight_detail", flight: flight %>
+                <%= form.radio_button :choice, flight.id %>
             </p>
         <% end %>
         <%= form.submit "Book a flight" %>
