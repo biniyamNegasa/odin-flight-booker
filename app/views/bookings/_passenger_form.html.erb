@@ -1,0 +1,15 @@
+<div class="passenger-form-special" data-controller="passenger-form" data-passenger-form-target="passenger" >
+    <p>New Passenger</p>
+    <div>
+        <%= passenger_form.label :name %>
+        <%= passenger_form.text_field :name, placeholder: "Your Name" %>
+    </div>
+    <div>
+        <%= passenger_form.label :email %>
+        <%= passenger_form.email_field :email %>
+    </div>
+    <br>
+    <button data-action="click->passenger-form#removePassenger" >Remove this passenger</button>
+    <br>
+    <br>
+</div>

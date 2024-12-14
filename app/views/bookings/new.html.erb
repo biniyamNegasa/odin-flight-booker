@@ -1,20 +1,16 @@
 <h3>Here is what you chose!</h3>
 <%= render "flights/flight_detail", flight: @flight %>
-
 <%= form_with model: @booking do |form| %>
-    <h5>Please fill out each passengers details</h6>
-    <%= form.hidden_field :flight, value: @flight.id %>
-    <%= form.fields_for :passengers do |passenger_form| %>
-        <p>New Passenger</p>
+    <div data-controller="passenger-form" >
+        <h5>Please fill out each passengers details</h6>
+        <button data-action="click->passenger-form#addPassenger" > Add Passenger </button>
+        <%= form.hidden_field :flight, value: @flight.id %>
         <div>
-            <%= passenger_form.label :name %>
-            <%= passenger_form.text_field :name, placeholder: "Your Name" %>
+            <%= form.fields_for :passengers do |passenger_form| %>
+                <%= render "passenger_form", passenger_form: passenger_form %>
+            <% end %>
         </div>
-        <div>
-            <%= passenger_form.label :email %>
-            <%= passenger_form.email_field :email %>
-        </div>
-        <br>
-    <% end %>
+
+    </div>
     <%= form.submit %>
 <% end %>

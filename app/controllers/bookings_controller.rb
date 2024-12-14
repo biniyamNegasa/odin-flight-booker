@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
     booking_params[:passengers_attributes].each_value do |lst|
       @booking.passengers.build(lst)
     end
-
     if @booking.save
       redirect_to @booking, notice: "Booked Successfully!"
     else
