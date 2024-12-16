@@ -20,6 +20,9 @@ class BookingsController < ApplicationController
       @booking.passengers.build(lst)
     end
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(user: passenger, flight: Flight.find(booking_params[:flight])).booking_email.deliver!
+      end
       redirect_to @booking, notice: "Booked Successfully!"
     else
       redirect_to flights_url, status: :unprocessable_entity

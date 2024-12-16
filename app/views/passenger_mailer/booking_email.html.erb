@@ -1,0 +1,7 @@
+<h1>You have a booked a flight, <%= @user.name %> </h1>
+<p>
+    You have succesfully booked your flight. Flight details:
+    <%= render  "flights/flight_detail", flight: @flight %>
+</p>
+
+<p> Thanks for booking with us and have a great day! </p>

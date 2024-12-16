@@ -1,0 +1,10 @@
+You have a booked a flight, <%= @user.name %>
+
+===========================================================
+You have succesfully booked your flight. Flight details:
+Departure Airport: <%= @flight.departure_airport.airport_code %>
+Arrival Airport: <%= @flight.arrival_airport.airport_code %>
+Departure Time: <%= @flight.start_datetime %>
+Duration: <%= @flight.duration %>
+
+Thanks for booking with us and have a great day!
